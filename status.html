@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    $(if refresh-timeout)
+    <meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+    $(endif)
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <title>ZoNe 206 - Mon compte</title>
+    <link rel="stylesheet" href="css/style2.css">
+</head>
+
+<body class="status-page">
+
+    <div class="background-overlay"></div>
+
+    <div class="status-wrapper">
+        <div class="status-card">
+
+            <!-- HEADER -->
+            <div class="status-header">
+                <div class="status-logo">ZoNe <span>206</span></div>
+                <div class="online">
+                    <i></i>
+                    EN LIGNE
+                </div>
+            </div>
+
+            <!-- UTILISATEUR -->
+            <div class="hello">
+                Bonjour, <strong>$(username)</strong> 👋
+            </div>
+
+            <!-- QUOTA -->
+            <div class="quota-card">
+                <div class="quota-top">
+                    <div>
+                        <small>Votre consommation Internet depuis la connexion</small>
+                        <h1 id="used">0 Go</h1>
+                    </div>
+                    <div class="quota-total">
+                        <strong>60 Go</strong>
+                        <small>quota mensuel</small>
+                    </div>
+                </div>
+                <div class="progress">
+                    <div id="usageBar"></div>
+                </div>
+                <div class="quota-bottom">
+                    <span id="percent">0 % utilisé</span>
+
+                </div>
+            </div>
+
+            <!-- STATISTIQUES -->
+            <div class="statistics">
+                <div class="stat">
+                    <span>⬇️</span>
+                    <small>Téléchargement</small>
+                    <strong>$(bytes-in-nice)</strong>
+                </div>
+                <div class="stat">
+                    <span>⬆️</span>
+                    <small>Envoi</small>
+                    <strong>$(bytes-out-nice)</strong>
+                </div>
+                <div class="stat">
+                    <span>⏱️</span>
+                    <small>Session</small>
+                    <strong>$(uptime)</strong>
+                </div>
+                $(if session-time-left)
+                <div class="stat">
+                    <span>⌛</span>
+                    <small>Temps restant</small>
+                    <strong>$(session-time-left)</strong>
+                </div>
+                $(endif)
+            </div>
+
+            <!-- INFORMATIONS UTILISATEUR -->
+            <div class="user-details">
+                <div>
+                    <span>👤</span>
+                    <section>
+                        <small>Utilisateur</small>
+                        <strong>$(username)</strong>
+                    </section>
+                </div>
+                <div>
+                    <span>🌐</span>
+                    <section>
+                        <small>Adresse IP</small>
+                        <strong>$(ip)</strong>
+                    </section>
+                </div>
+                <div>
+                    <span>📱</span>
+                    <section>
+                        <small>Adresse MAC</small>
+                        <strong>$(mac)</strong>
+                    </section>
+                </div>
+            </div>
+
+            <div class="auto-refresh">🔄 Statistiques actualisées automatiquement</div>
+
+            <!-- DÉCONNEXION -->
+            <form action="$(link-logout)" name="logout" onsubmit="return openLogout()">
+                $(if login-by-mac != 'yes')
+                <button class="logout-button" type="submit">Se déconnecter</button>
+                $(endif)
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+        function openLogout() {
+            if (window.name != 'hotspot_status') return true;
+            open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=360,height=500');
+            window.close();
+            return false;
+        }
+
+        // === QUOTA 60 Go ===
+        const QUOTA = 60 * 1024 * 1024 * 1024;
+
+        function updateUsage() {
+            const download = Number("$(bytes-in)") || 0;
+            const upload = Number("$(bytes-out)") || 0;
+            const used = download + upload;
+            const percentage = Math.min(100, (used / QUOTA) * 100);
+            const remaining = Math.max(0, QUOTA - used);
+
+            document.getElementById("used").textContent = (used / 1073741824).toFixed(2) + " Go";
+            document.getElementById("percent").textContent = percentage.toFixed(1) + "% utilisé";
+            document.getElementById("remaining").textContent = (remaining / 1073741824).toFixed(2) + " Go restants";
+            document.getElementById("usageBar").style.width = percentage + "%";
+        }
+
+        updateUsage();
+        setInterval(updateUsage, 10000);
+    </script>
+
+</body>
+
+</html>

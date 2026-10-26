@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <title>ZoNe 206 - Déconnexion</title>
+    <link rel="stylesheet" href="css/style2.css">
+    <script>
+        function openLogin() {
+            if (window.name != 'hotspot_logout') return true;
+            open('$(link-login)', '_blank', '');
+            window.close();
+            return false;
+        }
+    </script>
+</head>
+
+<body class="status-page">
+
+    <div class="background-overlay"></div>
+
+    <div class="status-wrapper">
+        <div class="status-card logout-card">
+
+            <div class="success-icon">✓</div>
+
+            <div class="status-logo">ZoNe <span>206</span></div>
+
+            <h1>Vous êtes déconnecté</h1>
+
+            <p class="description">Merci d'avoir utilisé ZoNe 206.</p>
+
+            <div class="user-details">
+                <div>
+                    <span>👤</span>
+                    <section>
+                        <small>Utilisateur</small>
+                        <strong>$(username)</strong>
+                    </section>
+                </div>
+                <div>
+                    <span>⏱️</span>
+                    <section>
+                        <small>Durée</small>
+                        <strong>$(uptime)</strong>
+                    </section>
+                </div>
+                <div>
+                    <span>📊</span>
+                    <section>
+                        <small>Trafic</small>
+                        <strong>$(bytes-in-nice) / $(bytes-out-nice)</strong>
+                    </section>
+                </div>
+            </div>
+
+            <form action="$(link-login)" name="login" onsubmit="return openLogin()">
+                <button class="connect-button" type="submit">
+                    <span>Se reconnecter</span>
+                    <b>→</b>
+                </button>
+            </form>
+
+            <div class="copyright">© 2026 Armail - Tous droits réservés</div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

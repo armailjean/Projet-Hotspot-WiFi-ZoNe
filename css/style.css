@@ -1,0 +1,1792 @@
+/* =========================================================
+   ZoNe 206
+   MODERN GLASS / BACKGROUND VISIBLE
+   Smartphone + Tablette + Ordinateur
+   ========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root {
+
+    --white: #ffffff;
+
+    --text-soft:
+        rgba(255, 255, 255, 0.72);
+
+    --text-muted:
+        rgba(255, 255, 255, 0.48);
+
+    --cyan: #57e8ff;
+
+    --blue: #168cff;
+
+    --green: #36df82;
+
+    --purple: #d64cff;
+
+    --orange: #ff9f35;
+
+    --glass:
+        rgba(5, 17, 38, 0.30);
+
+    --glass-light:
+        rgba(255, 255, 255, 0.07);
+
+    --border:
+        rgba(255, 255, 255, 0.20);
+
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html,
+body {
+
+    width: 100%;
+
+    min-height: 100%;
+
+}
+
+
+body {
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: var(--white);
+
+    overflow-x: hidden;
+
+}
+
+
+button,
+input {
+
+    font: inherit;
+
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.login-page {
+
+    min-height: 100vh;
+
+    position: relative;
+
+    background-image:
+        url("../img/FondFinal.jpg");
+
+    background-position:
+        center center;
+
+    background-repeat:
+        no-repeat;
+
+    background-size:
+        cover;
+
+    background-attachment:
+        fixed;
+
+}
+
+
+/*
+   IMPORTANT :
+
+   Overlay volontairement très léger.
+   Le background reste beaucoup plus visible.
+*/
+
+.background-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 15, 80, 0.05),
+            rgba(0, 0, 0, 0.12)
+        );
+
+}
+
+
+/* =========================================================
+   WRAPPER
+   ========================================================= */
+
+.login-wrapper {
+
+    position: relative;
+
+    z-index: 1;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 25px 15px;
+
+}
+
+
+/* =========================================================
+   CARTE PRINCIPALE
+   ========================================================= */
+
+.login-card {
+
+    width: 100%;
+
+    max-width: 470px;
+
+    padding: 26px 25px 20px;
+
+    border-radius: 27px;
+
+    /*
+       PLUS TRANSPARENT
+    */
+
+    background:
+        rgba(5, 17, 38, 0.28);
+
+    backdrop-filter:
+        blur(9px)
+        saturate(115%);
+
+    -webkit-backdrop-filter:
+        blur(9px)
+        saturate(115%);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.24);
+
+    box-shadow:
+
+        0 25px 60px
+        rgba(0,0,0,0.25),
+
+        inset 0 1px 0
+        rgba(255,255,255,0.20);
+
+    animation:
+        cardIn .55s ease;
+
+}
+
+
+@keyframes cardIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px)
+            scale(.98);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.login-logo {
+
+    text-align: center;
+
+    margin-bottom: 18px;
+
+}
+
+
+.wifi-symbol {
+
+    width: 47px;
+
+    height: 47px;
+
+    margin:
+        0 auto 7px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #087fff,
+            #00d9ff
+        );
+
+    box-shadow:
+        0 7px 24px
+        rgba(0,190,255,.30);
+
+    font-size: 23px;
+
+}
+
+
+.zone-title {
+
+    font-size: 34px;
+
+    line-height: 1;
+
+    font-weight: 900;
+
+    letter-spacing: -2px;
+
+}
+
+
+.zone-title span {
+
+    color: var(--cyan);
+
+    text-shadow:
+        0 0 20px
+        rgba(87,232,255,.45);
+
+}
+
+
+.wifi-subtitle {
+
+    margin-top: 5px;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 2.5px;
+
+    color:
+        rgba(255,255,255,.78);
+
+}
+
+
+/* =========================================================
+   WELCOME
+   ========================================================= */
+
+.welcome {
+
+    text-align: center;
+
+    margin-bottom: 15px;
+
+}
+
+
+.welcome-label {
+
+    display: block;
+
+    color: var(--cyan);
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.4px;
+
+}
+
+
+.welcome strong {
+
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+}
+
+
+.welcome span:last-child {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color:
+        rgba(255,255,255,.70);
+
+    font-size: 10px;
+
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.error-message {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 10px;
+
+    margin-bottom: 12px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255,50,70,.12);
+
+    border:
+        1px solid
+        rgba(255,100,110,.25);
+
+    color: #ffd4d4;
+
+    font-size: 10px;
+
+    text-align: center;
+
+}
+
+
+.hidden-form {
+
+    display: none;
+
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.input-box {
+
+    position: relative;
+
+    margin-bottom: 11px;
+
+}
+
+
+.input-box input {
+
+    width: 100%;
+
+    height: 51px;
+
+    padding:
+        0 47px
+        0 45px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    border-radius: 14px;
+
+    outline: none;
+
+    color: white;
+
+    /*
+       TRANSPARENT
+    */
+
+    background:
+        rgba(255,255,255,.10);
+
+    backdrop-filter:
+        blur(5px);
+
+    -webkit-backdrop-filter:
+        blur(5px);
+
+    transition:
+        .22s ease;
+
+}
+
+
+.input-box input::placeholder {
+
+    color:
+        rgba(255,255,255,.70);
+
+}
+
+
+.input-box input:focus {
+
+    background:
+        rgba(255,255,255,.15);
+
+    border-color:
+        rgba(87,232,255,.75);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(0,210,255,.10);
+
+}
+
+
+/* =========================================================
+   INPUT ICON
+   ========================================================= */
+
+.input-icon {
+
+    position: absolute;
+
+    left: 14px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    width: 19px;
+
+    height: 19px;
+
+    z-index: 2;
+
+    opacity: .78;
+
+}
+
+
+.input-icon svg {
+
+    width: 100%;
+
+    height: 100%;
+
+    fill: white;
+
+}
+
+
+/* =========================================================
+   PASSWORD
+   ========================================================= */
+
+.eye-button {
+
+    position: absolute;
+
+    right: 8px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    width: 35px;
+
+    height: 35px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: white;
+
+    background:
+        rgba(255,255,255,.08);
+
+    cursor: pointer;
+
+}
+
+
+.eye-button:hover {
+
+    background:
+        rgba(255,255,255,.16);
+
+}
+
+
+.eye-button svg {
+
+    width: 18px;
+
+    height: 18px;
+
+    fill: currentColor;
+
+}
+
+
+/* =========================================================
+   CONNEXION
+   ========================================================= */
+
+.connect-button {
+
+    width: 100%;
+
+    height: 51px;
+
+    margin-top: 3px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 13px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            100deg,
+            #087fff,
+            #00cfff
+        );
+
+    box-shadow:
+        0 8px 24px
+        rgba(0,170,255,.22);
+
+    font-size: 13px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        .22s ease;
+
+}
+
+
+.connect-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(0,190,255,.35);
+
+}
+
+
+.connect-button b {
+
+    font-size: 20px;
+
+}
+
+
+/* =========================================================
+   ESSAI GRATUIT
+   ========================================================= */
+
+.trial {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 11px;
+
+    padding: 10px 13px;
+
+    border-radius: 13px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    background:
+        rgba(255,255,255,.055);
+
+    transition:
+        .2s ease;
+
+}
+
+
+.trial:hover {
+
+    background:
+        rgba(255,255,255,.10);
+
+}
+
+
+.trial-icon {
+
+    font-size: 20px;
+
+}
+
+
+.trial small,
+.trial strong {
+
+    display: block;
+
+}
+
+
+.trial small {
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 8px;
+
+}
+
+
+.trial strong {
+
+    margin-top: 2px;
+
+    color: var(--cyan);
+
+    font-size: 10px;
+
+}
+
+
+/* =========================================================
+   SERVICES
+   ========================================================= */
+
+.services {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 7px;
+
+    margin-top: 12px;
+
+}
+
+
+.services div {
+
+    padding: 9px 5px;
+
+    text-align: center;
+
+    border-radius: 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    background:
+        rgba(255,255,255,.045);
+
+}
+
+
+.services span,
+.services strong,
+.services small {
+
+    display: block;
+
+}
+
+
+.services span {
+
+    font-size: 15px;
+
+}
+
+
+.services strong {
+
+    margin-top: 3px;
+
+    font-size: 8px;
+
+}
+
+
+.services small {
+
+    margin-top: 2px;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 6px;
+
+}
+
+
+/* =========================================================
+   OFFRES
+   ========================================================= */
+
+.offers-section {
+
+    margin-top: 16px;
+
+    padding-top: 14px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.12);
+
+}
+
+
+.section-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+
+}
+
+
+.section-header small {
+
+    display: block;
+
+    color: var(--cyan);
+
+    font-size: 7px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.2px;
+
+}
+
+
+.section-header h2 {
+
+    margin-top: 2px;
+
+    font-size: 15px;
+
+}
+
+
+.offers-badge {
+
+    padding: 5px 7px;
+
+    border-radius: 20px;
+
+    color: #fff;
+
+    background:
+        rgba(255,255,255,.10);
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    font-size: 6px;
+
+    font-weight: 900;
+
+}
+
+
+/* =========================================================
+   POINT DE VENTE
+   ========================================================= */
+
+.location-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 9px;
+
+    padding: 9px 11px;
+
+    border-radius: 13px;
+
+    background:
+        rgba(255,255,255,.055);
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+}
+
+
+.location-icon {
+
+    width: 29px;
+
+    height: 29px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background:
+        rgba(0,190,255,.12);
+
+    font-size: 14px;
+
+}
+
+
+.location-info small,
+.location-info strong,
+.location-info a {
+
+    display: block;
+
+}
+
+
+.location-info small {
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 6px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+}
+
+
+.location-info strong {
+
+    margin-top: 1px;
+
+    font-size: 9px;
+
+}
+
+
+.location-info a {
+
+    margin-top: 2px;
+
+    color: var(--cyan);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   GRILLE OFFRES
+   ========================================================= */
+
+.grid-offers {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 7px;
+
+}
+
+
+/* =========================================================
+   CARTE OFFRE
+   PETITE
+   ========================================================= */
+
+.offer-card {
+
+    position: relative;
+
+    min-width: 0;
+
+    padding: 10px 7px;
+
+    border-radius: 13px;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+
+}
+
+
+/* effet lumineux */
+
+.offer-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 40px;
+
+    height: 40px;
+
+    right: -20px;
+
+    bottom: -20px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.15);
+
+}
+
+
+.offer-card:hover {
+
+    transform:
+        translateY(-3px);
+
+}
+
+
+/* =========================================================
+   COULEURS DES OFFRES
+   ========================================================= */
+
+
+/* BLEU */
+
+.offer-blue {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0,130,255,.48),
+            rgba(0,75,180,.32)
+        );
+
+    border-color:
+        rgba(40,180,255,.50);
+
+}
+
+
+.offer-blue:hover {
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,130,255,.25);
+
+}
+
+
+/* VERT */
+
+.offer-green {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20,200,110,.48),
+            rgba(0,120,70,.30)
+        );
+
+    border-color:
+        rgba(50,230,140,.50);
+
+}
+
+
+.offer-green:hover {
+
+    box-shadow:
+        0 8px 20px
+        rgba(30,220,120,.25);
+
+}
+
+
+/* VIOLET */
+
+.offer-purple {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(215,55,255,.55),
+            rgba(120,20,180,.32)
+        );
+
+    border-color:
+        rgba(240,100,255,.70);
+
+}
+
+
+.offer-purple:hover {
+
+    box-shadow:
+        0 8px 22px
+        rgba(215,55,255,.30);
+
+}
+
+
+/* ORANGE */
+
+.offer-orange {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,145,30,.52),
+            rgba(190,75,0,.32)
+        );
+
+    border-color:
+        rgba(255,180,70,.60);
+
+}
+
+
+.offer-orange:hover {
+
+    box-shadow:
+        0 8px 20px
+        rgba(255,150,30,.25);
+
+}
+
+
+/* =========================================================
+   TEXTE OFFRES
+   ========================================================= */
+
+.offer-type {
+
+    display: block;
+
+    color:
+        rgba(255,255,255,.75);
+
+    font-size: 6px;
+
+    font-weight: 900;
+
+    letter-spacing: .8px;
+
+}
+
+
+.offer-data {
+
+    margin-top: 5px;
+
+    font-size: 20px;
+
+    line-height: 1;
+
+    font-weight: 950;
+
+}
+
+
+.offer-data small {
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+}
+
+
+.offer-price {
+
+    margin-top: 5px;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+}
+
+
+.offer-price small {
+
+    font-size: 6px;
+
+}
+
+
+.offer-duration {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 6px;
+
+}
+
+
+/* =========================================================
+   RECOMMANDÉ
+   ========================================================= */
+
+.recommended {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: max-content;
+
+    padding: 3px 6px;
+
+    border-radius:
+        0 0 6px 6px;
+
+    color: #31103c;
+
+    background:
+        #ffffff;
+
+    font-size: 5px;
+
+    font-weight: 950;
+
+}
+
+
+.featured {
+
+    padding-top: 17px;
+
+}
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact-section {
+
+    margin-top: 15px;
+
+    padding-top: 13px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.12);
+
+}
+
+
+.contact-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.contact-icon {
+
+    width: 29px;
+
+    height: 29px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background:
+        rgba(50,220,130,.12);
+
+}
+
+
+.contact-title small {
+
+    display: block;
+
+    color:
+        var(--cyan);
+
+    font-size: 6px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+}
+
+
+.contact-title strong {
+
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================================
+   CONTACTS
+   ========================================================= */
+
+.contacts-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 7px;
+
+}
+
+
+.phone-btn {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px;
+
+    border-radius: 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    transition:
+        .2s ease;
+
+}
+
+
+.phone-btn:hover {
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.phone-btn > span {
+
+    width: 27px;
+
+    height: 27px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 8px;
+
+}
+
+
+.phone-blue {
+
+    background:
+        rgba(0,130,255,.16);
+
+}
+
+
+.phone-blue > span {
+
+    background:
+        rgba(0,130,255,.25);
+
+}
+
+
+.phone-green {
+
+    background:
+        rgba(30,210,120,.16);
+
+}
+
+
+.phone-green > span {
+
+    background:
+        rgba(30,210,120,.25);
+
+}
+
+
+.phone-btn small,
+.phone-btn strong {
+
+    display: block;
+
+}
+
+
+.phone-btn small {
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 5px;
+
+    font-weight: 800;
+
+    letter-spacing: .8px;
+
+}
+
+
+.phone-btn strong {
+
+    margin-top: 2px;
+
+    font-size: 8px;
+
+}
+
+
+/* =========================================================
+   COPYRIGHT
+   ========================================================= */
+
+.copyright {
+
+    margin-top: 13px;
+
+    padding-top: 9px;
+
+    text-align: center;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+
+    color:
+        rgba(255,255,255,.36);
+
+    font-size: 6px;
+
+}
+
+
+/* =========================================================
+   TABLETTE
+   ========================================================= */
+
+@media (min-width: 601px)
+       and (max-width: 900px) {
+
+    .login-card {
+
+        max-width: 480px;
+
+    }
+
+}
+
+
+/* =========================================================
+   SMARTPHONE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .login-page {
+
+        background-attachment:
+            scroll;
+
+    }
+
+
+    .login-wrapper {
+
+        align-items:
+            flex-start;
+
+        padding:
+            12px 9px;
+
+    }
+
+
+    .login-card {
+
+        max-width:
+            430px;
+
+        margin:
+            5px auto;
+
+        padding:
+            22px 15px 16px;
+
+        border-radius:
+            23px;
+
+        /*
+           Encore plus transparent
+           sur mobile
+        */
+
+        background:
+            rgba(5,17,38,.25);
+
+        backdrop-filter:
+            blur(7px);
+
+        -webkit-backdrop-filter:
+            blur(7px);
+
+    }
+
+
+    .zone-title {
+
+        font-size:
+            30px;
+
+    }
+
+
+    .grid-offers {
+
+        gap:
+            5px;
+
+    }
+
+
+    .offer-card {
+
+        padding:
+            9px 4px;
+
+        border-radius:
+            11px;
+
+    }
+
+
+    .offer-data {
+
+        font-size:
+            18px;
+
+    }
+
+
+    .offer-price {
+
+        font-size:
+            9px;
+
+    }
+
+}
+
+
+/* =========================================================
+   PETIT SMARTPHONE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .login-card {
+
+        padding:
+            19px 11px 14px;
+
+        border-radius:
+            20px;
+
+    }
+
+
+    .wifi-symbol {
+
+        width:
+            43px;
+
+        height:
+            43px;
+
+        font-size:
+            21px;
+
+    }
+
+
+    .zone-title {
+
+        font-size:
+            27px;
+
+    }
+
+
+    .wifi-subtitle {
+
+        font-size:
+            7px;
+
+        letter-spacing:
+            1.8px;
+
+    }
+
+
+    .input-box input,
+    .connect-button {
+
+        height:
+            48px;
+
+    }
+
+
+    .services {
+
+        gap:
+            4px;
+
+    }
+
+
+    .services div {
+
+        padding:
+            8px 2px;
+
+    }
+
+
+    .grid-offers {
+
+        gap:
+            4px;
+
+    }
+
+
+    .offer-card {
+
+        padding:
+            8px 3px;
+
+    }
+
+
+    .offer-data {
+
+        font-size:
+            16px;
+
+    }
+
+
+    .offer-price {
+
+        font-size:
+            8px;
+
+    }
+
+
+    .offer-type {
+
+        font-size:
+            5px;
+
+    }
+
+
+    .recommended {
+
+        font-size:
+            4px;
+
+        padding:
+            3px 4px;
+
+    }
+
+
+    .featured {
+
+        padding-top:
+            15px;
+
+    }
+
+}
+
+
+/* =========================================================
+   FALLBACK
+   ========================================================= */
+
+@supports not
+    (backdrop-filter: blur(10px)) {
+
+    .login-card {
+
+        background:
+            rgba(5,17,38,.48);
+
+    }
+
+}

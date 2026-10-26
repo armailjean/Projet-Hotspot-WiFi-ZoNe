@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <meta name="theme-color" content="#06152c">
+
+    <title>ZoNe 206 - Wi-Fi Haute Vitesse</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="login-page">
+
+    <!-- OVERLAY TRÈS LÉGER : LE BACKGROUND RESTE VISIBLE -->
+    <div class="background-overlay"></div>
+
+    <main class="login-wrapper">
+
+        <section class="login-card">
+
+            <!-- =========================
+                 LOGO
+            ========================== -->
+            <header class="login-logo">
+
+                <div class="wifi-symbol">
+                    ◉
+                </div>
+
+                <div class="zone-title">
+                    ZoNe <span>206</span>
+                </div>
+
+                <div class="wifi-subtitle">
+                    WI-FI HAUTE VITESSE
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 BIENVENUE
+            ========================== -->
+            <div class="welcome">
+
+                <span class="welcome-label">
+                    CONNEXION INTERNET
+                </span>
+
+                <strong>
+                    Bienvenue sur ZoNe 206
+                </strong>
+
+                <span>
+                    Connectez-vous pour accéder à Internet
+                </span>
+
+            </div>
+
+
+            <!-- =========================
+                 ERREUR MIKROTIK
+            ========================== -->
+
+            $(if error)
+
+            <div class="error-message">
+                <span>⚠️</span>
+                <span>$(error)</span>
+            </div>
+
+            $(endif)
+
+
+            <!-- =========================
+                 CHAP
+            ========================== -->
+
+            $(if chap-id)
+
+            <form
+                name="sendin"
+                action="$(link-login-only)"
+                method="post"
+                class="hidden-form">
+
+                <input type="hidden" name="username">
+
+                <input type="hidden" name="password">
+
+                <input
+                    type="hidden"
+                    name="dst"
+                    value="$(link-orig)">
+
+                <input
+                    type="hidden"
+                    name="popup"
+                    value="true">
+
+            </form>
+
+
+            <script src="md5.js"></script>
+
+            <script>
+
+                function doLogin() {
+
+                    document.sendin.username.value =
+                        document.login.username.value;
+
+                    document.sendin.password.value =
+                        hexMD5(
+                            '$(chap-id)' +
+                            document.login.password.value +
+                            '$(chap-challenge)'
+                        );
+
+                    document.sendin.submit();
+
+                    return false;
+                }
+
+            </script>
+
+            $(endif)
+
+
+            <!-- =========================
+                 FORMULAIRE LOGIN
+            ========================== -->
+
+            <form
+                name="login"
+                action="$(link-login-only)"
+                method="post"
+                $(if chap-id)
+                onsubmit="return doLogin()"
+                $(endif)
+            >
+
+                <input
+                    type="hidden"
+                    name="dst"
+                    value="$(link-orig)">
+
+                <input
+                    type="hidden"
+                    name="popup"
+                    value="true">
+
+
+                <!-- USERNAME -->
+
+                <div class="input-box">
+
+                    <div class="input-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="
+                                M12 12c2.21 0 4-1.79
+                                4-4s-1.79-4-4-4-4
+                                1.79-4 4 1.79 4
+                                4 4zm0 2c-2.67 0-8
+                                1.34-8 4v2h16v-2
+                                c0-2.66-5.33-4-8-4z
+                            "/>
+
+                        </svg>
+
+                    </div>
+
+                    <input
+                        type="text"
+                        name="username"
+                        value="$(username)"
+                        placeholder="Nom d'utilisateur"
+                        autocomplete="username"
+                        required>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="input-box">
+
+                    <div class="input-icon">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="
+                                M18 8h-1V6c0-2.76
+                                -2.24-5-5-5S7
+                                3.24 7 6v2H6
+                                c-1.1 0-2 .9-2
+                                2v10c0 1.1.9 2
+                                2 2h12c1.1 0
+                                2-.9 2-2V10c0
+                                -1.1-.9-2-2-2zm
+                                -6 9c-1.1 0-2-.9
+                                -2-2s.9-2 2-2
+                                2 .9 2 2-.9
+                                2-2 2z
+                            "/>
+
+                        </svg>
+
+                    </div>
+
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Mot de passe"
+                        autocomplete="current-password"
+                        required>
+
+
+                    <button
+                        type="button"
+                        class="eye-button"
+                        onclick="togglePassword()">
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path d="
+                                M12 4.5C7 4.5
+                                2.73 7.61 1 12
+                                c1.73 4.39 6
+                                7.5 11 7.5
+                                s9.27-3.11
+                                11-7.5
+                                C21.27 7.61
+                                17 4.5 12 4.5zm0
+                                12.5c-2.76 0-5-2.24
+                                -5-5s2.24-5
+                                5-5 5 2.24
+                                5 5-2.24 5-5 5z
+                            "/>
+
+                        </svg>
+
+                    </button>
+
+                </div>
+
+
+                <!-- CONNEXION -->
+
+                <button
+                    type="submit"
+                    class="connect-button">
+
+                    <span>
+                        Se connecter
+                    </span>
+
+                    <b>→</b>
+
+                </button>
+
+            </form>
+
+
+            <!-- =========================
+                 ESSAI GRATUIT
+            ========================== -->
+
+            $(if trial == 'yes')
+
+            <a
+                href="$(link-login-only)?dst=$(link-orig-esc)&username=T-$(mac-esc)"
+                class="trial">
+
+                <span class="trial-icon">
+                    🎁
+                </span>
+
+                <div>
+
+                    <small>
+                        Vous voulez essayer ?
+                    </small>
+
+                    <strong>
+                        Essai gratuit
+                        <b>→</b>
+                    </strong>
+
+                </div>
+
+            </a>
+
+            $(endif)
+
+
+            <!-- =========================
+                 SERVICES
+            ========================== -->
+
+            <div class="services">
+
+                <div>
+                    <span>⚡</span>
+                    <strong>Rapide</strong>
+                    <small>Connexion fluide</small>
+                </div>
+
+                <div>
+                    <span>🛡️</span>
+                    <strong>Sécurisé</strong>
+                    <small>Accès contrôlé</small>
+                </div>
+
+                <div>
+                    <span>🕐</span>
+                    <strong>24h/24</strong>
+                    <small>Disponible</small>
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 OFFRES
+            ========================== -->
+
+            <section class="offers-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <small>
+                            NOS FORMULES
+                        </small>
+
+                        <h2>
+                            Offres par mois
+                        </h2>
+
+                    </div>
+
+                    <span class="offers-badge">
+                        POPULAIRES
+                    </span>
+
+                </div>
+
+
+                <!-- POINT DE VENTE -->
+
+                <div class="location-info">
+
+                    <div class="location-icon">
+                        📍
+                    </div>
+
+                    <div>
+
+                        <small>
+                            POINT DE VENTE
+                        </small>
+
+                        <strong>
+                            ARMAIL — Bat G P26
+                        </strong>
+
+                        <a href="tel:0329046020">
+                            📞 032 90 460 20
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARTES OFFRES -->
+
+                <div class="grid-offers">
+
+
+                    <!-- 60 GO -->
+
+                    <div class="offer-card offer-blue">
+
+                        <span class="offer-type">
+                            START
+                        </span>
+
+                        <div class="offer-data">
+                            60
+                            <small>Go</small>
+                        </div>
+
+                        <div class="offer-price">
+                            15 000
+                            <small>Ar</small>
+                        </div>
+
+                        <span class="offer-duration">
+                            / mois
+                        </span>
+
+                    </div>
+
+
+                    <!-- 85 GO -->
+
+                    <div class="offer-card offer-green">
+
+                        <span class="offer-type">
+                            STANDARD
+                        </span>
+
+                        <div class="offer-data">
+                            85
+                            <small>Go</small>
+                        </div>
+
+                        <div class="offer-price">
+                            20 000
+                            <small>Ar</small>
+                        </div>
+
+                        <span class="offer-duration">
+                            / mois
+                        </span>
+
+                    </div>
+
+
+                    <!-- 130 GO -->
+
+                    <div class="offer-card offer-purple featured">
+
+                        <span class="recommended">
+                            ★ RECOMMANDÉ
+                        </span>
+
+                        <span class="offer-type">
+                            PREMIUM
+                        </span>
+
+                        <div class="offer-data">
+                            130
+                            <small>Go</small>
+                        </div>
+
+                        <div class="offer-price">
+                            30 000
+                            <small>Ar</small>
+                        </div>
+
+                        <span class="offer-duration">
+                            / mois
+                        </span>
+
+                    </div>
+
+
+                    <!-- 200 GO -->
+
+                    <div class="offer-card offer-orange">
+
+                        <span class="offer-type">
+                            MAX
+                        </span>
+
+                        <div class="offer-data">
+                            200
+                            <small>Go</small>
+                        </div>
+
+                        <div class="offer-price">
+                            45 000
+                            <small>Ar</small>
+                        </div>
+
+                        <span class="offer-duration">
+                            / mois
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 CONTACT
+            ========================== -->
+
+            <footer class="contact-section">
+
+                <div class="contact-title">
+
+                    <div class="contact-icon">
+                        💬
+                    </div>
+
+                    <div>
+
+                        <small>
+                            BESOIN D'AIDE ?
+                        </small>
+
+                        <strong>
+                            Support & Infos
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contacts-grid">
+
+                    <a
+                        href="tel:0329046020"
+                        class="phone-btn phone-blue">
+
+                        <span>📞</span>
+
+                        <div>
+                            <small>
+                                APPELER
+                            </small>
+
+                            <strong>
+                                032 90 460 20
+                            </strong>
+                        </div>
+
+                    </a>
+
+
+                    <a
+                        href="tel:0381299882"
+                        class="phone-btn phone-green">
+
+                        <span>📞</span>
+
+                        <div>
+                            <small>
+                                APPELER
+                            </small>
+
+                            <strong>
+                                038 12 998 82
+                            </strong>
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </footer>
+
+
+            <!-- COPYRIGHT -->
+
+            <div class="copyright">
+            <h2>
+                © 2026 Armail Jean
+                · ZoNe 206
+                · Tous droits réservés
+            </h2>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        function togglePassword() {
+
+            const password =
+                document.getElementById("password");
+
+            password.type =
+                password.type === "password"
+                    ? "text"
+                    : "password";
+
+        }
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const usernameField =
+                    document.querySelector(
+                        'input[name="username"]'
+                    );
+
+                if (
+                    usernameField &&
+                    !usernameField.value
+                ) {
+
+                    usernameField.focus();
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
