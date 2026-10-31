@@ -1,638 +1,427 @@
-# 🌐 Page d'accueil WiFi — ZoNe206
+# Social Commerce Manager
 
-![ZoNe206](https://img.shields.io/badge/WiFi-ZoNe206-blue)
-![MikroTik](https://img.shields.io/badge/MikroTik-Hotspot-red)
-![Responsive](https://img.shields.io/badge/Design-Responsive-green)
-![HTML5](https://img.shields.io/badge/HTML5-orange)
-![CSS3](https://img.shields.io/badge/CSS3-blue)
+**Application web de gestion commerciale et de suivi des commandes pour les vendeurs sur Facebook et WhatsApp.**
 
-## 📡 Présentation
-
-**ZoNe206 WiFi** est une interface web de **portail captif (Hotspot)** destinée à l'accueil des utilisateurs d'un réseau Wi-Fi basé sur **MikroTik**.
-
-Cette page constitue le premier point de contact entre l'utilisateur et le service Wi-Fi. Elle permet de présenter clairement le service, les offres disponibles et l'accès à Internet dans une interface moderne, responsive et adaptée aux différents appareils.
-
-Le projet a été conçu avec une attention particulière portée à :
-
-- 📱 l'expérience utilisateur sur smartphone ;
-- 💻 l'affichage sur ordinateur ;
-- 📲 la compatibilité avec les tablettes ;
-- 🎨 une interface moderne et attractive ;
-- 🌄 la visibilité du background ;
-- 💳 la présentation claire des offres Wi-Fi ;
-- 🔐 l'intégration avec le système Hotspot MikroTik.
+<p align="center">
+  <strong>Gérez vos clients, vos produits, vos commandes et vos livraisons depuis une seule plateforme.</strong>
+</p>
 
 ---
 
-# 🎯 Objectifs du projet
+## 1. Présentation du projet
 
-L'objectif principal est de créer une **page d'accueil Wi-Fi professionnelle** permettant de transformer la connexion au réseau en une expérience simple, claire et agréable.
+**Social Commerce Manager** est une application web conçue pour faciliter la gestion des activités commerciales des vendeurs qui utilisent les réseaux sociaux, notamment Facebook et WhatsApp, pour vendre leurs produits.
 
-Le projet cherche notamment à :
+L'application centralise les principales opérations commerciales dans une plateforme unique : gestion des clients, produits, stocks, commandes, paiements, livraisons et facturation.
 
-- présenter le service **ZoNe206** ;
-- faciliter la connexion des utilisateurs ;
-- afficher les offres Wi-Fi disponibles ;
-- rendre les informations facilement accessibles ;
-- adapter automatiquement l'interface à la taille de l'écran ;
-- améliorer l'expérience utilisateur du portail captif ;
-- fournir une base personnalisable pour un réseau Hotspot MikroTik.
+Elle adopte une architecture **multi-vendeurs**, permettant à plusieurs commerçants d'utiliser la même plateforme tout en conservant une séparation stricte de leurs données.
 
----
+L'objectif principal est de simplifier le travail quotidien des vendeurs, d'améliorer le suivi des commandes et d'optimiser la gestion de leur activité commerciale.
 
-# ✨ Fonctionnalités principales
+## 2. Objectifs du projet
 
-## 🔐 Portail captif MikroTik
+- Centraliser la gestion des commandes provenant des réseaux sociaux.
+- Simplifier l'enregistrement et le suivi des commandes.
+- Organiser les informations des clients.
+- Assurer un suivi efficace des produits et des stocks.
+- Faciliter la gestion des paiements et des livraisons.
+- Automatiser certaines tâches commerciales.
+- Générer des factures au format PDF.
+- Améliorer la communication avec les clients grâce aux notifications WhatsApp.
+- Permettre à plusieurs vendeurs de travailler sur une même plateforme sans partager leurs données privées.
+- Préparer une évolution vers un modèle économique basé sur des abonnements mensuels.
 
-L'interface est destinée à fonctionner avec le système **MikroTik Hotspot**.
+## 3. Fonctionnalités principales
 
-Elle prend en charge les éléments nécessaires au fonctionnement d'un portail captif, notamment :
+### 3.1. Gestion des comptes et des vendeurs
 
-- formulaire de connexion ;
-- nom d'utilisateur ;
-- mot de passe ;
-- authentification Hotspot ;
-- redirection après connexion ;
-- affichage des erreurs de connexion ;
-- déconnexion ;
-- affichage du statut de la session.
+- Inscription et authentification des utilisateurs.
+- Connexion et déconnexion sécurisées.
+- Gestion des profils vendeurs.
+- Modification des informations personnelles.
+- Gestion des accès et des autorisations.
+- Séparation des données entre les différents vendeurs.
+- Gestion des comptes utilisateurs.
 
-Les variables dynamiques MikroTik peuvent être utilisées directement dans les pages HTML.
+### 3.2. Gestion des clients
 
-Exemple :
+- Enregistrement des nouveaux clients.
+- Modification des informations clients.
+- Suppression des clients.
+- Consultation de la liste des clients.
+- Enregistrement des coordonnées téléphoniques.
+- Gestion des adresses de livraison.
+- Consultation de l'historique des commandes.
+- Recherche et filtrage des clients.
 
-```html
-$(username)
-$(link-login-only)
-$(link-logout)
-$(link-orig)
-$(error)
-```
+### 3.3. Gestion des produits et des stocks
 
----
+- Ajout de nouveaux produits.
+- Modification des informations des produits.
+- Suppression des produits.
+- Gestion des catégories.
+- Enregistrement des prix de vente.
+- Gestion des quantités disponibles.
+- Suivi des entrées et sorties de stock.
+- Alertes de stock faible.
+- Historique des mouvements de stock.
 
-# 🛍️ Présentation des offres Wi-Fi
+**Réservation du stock :**
 
-Une partie importante de la page d'accueil est consacrée à la présentation des offres disponibles.
+Le stock est réservé automatiquement lors de la confirmation d'une commande afin d'éviter les ventes dépassant les quantités disponibles.
 
-Les offres sont présentées sous forme de cartes afin de permettre à l'utilisateur de comparer rapidement :
+### 3.4. Gestion des commandes
 
-- le volume Internet ;
-- le prix ;
-- la durée ou les conditions ;
-- les informations importantes de l'offre.
+- Création manuelle des commandes.
+- Association des commandes aux clients.
+- Ajout de plusieurs produits dans une commande.
+- Calcul automatique des montants.
+- Gestion des quantités commandées.
+- Modification et consultation des commandes.
+- Suivi de l'état des commandes.
+- Historique des commandes.
+- Recherche et filtrage par statut ou par date.
 
-Exemple de structure :
+**Statuts des commandes :**
 
-```text
-┌──────────────────┐
-│     60 Go        │
-│                  │
-│    15 000 Ar     │
-│                  │
-│   Offre Wi-Fi    │
-└──────────────────┘
-```
+- En attente.
+- Confirmée.
+- En préparation.
+- Expédiée.
+- Livrée.
+- Annulée.
 
-Les informations commerciales peuvent être modifiées directement dans le code afin de correspondre aux offres réellement disponibles.
+### 3.5. Gestion des paiements
 
----
+- Enregistrement des paiements.
+- Suivi des paiements effectués.
+- Gestion des paiements partiels.
+- Calcul automatique des montants restants.
+- Consultation de l'historique des transactions.
+- Gestion des différents modes de paiement.
+- Suivi des commandes payées et non payées.
 
-# 🎨 Design
+### 3.6. Gestion des livraisons
 
-L'interface adopte une approche moderne basée notamment sur :
+- Enregistrement des informations de livraison.
+- Association d'une livraison à une commande.
+- Gestion des adresses de livraison.
+- Attribution des livraisons à un livreur.
+- Possibilité pour le vendeur d'effectuer lui-même la livraison.
+- Suivi de l'état des livraisons.
+- Gestion des frais de livraison.
+- Historique des livraisons.
 
-- transparence ;
-- effets de profondeur ;
-- cartes semi-transparentes ;
-- arrière-plan visible ;
-- typographie lisible ;
-- boutons modernes ;
-- couleurs différenciées pour les offres ;
-- espaces équilibrés ;
-- effets de survol ;
-- adaptation automatique aux écrans.
+**Statuts des livraisons :**
 
-L'objectif est de conserver une bonne visibilité du **background**, tout en maintenant une lisibilité suffisante du contenu.
+- En attente.
+- En préparation.
+- En cours de livraison.
+- Livrée.
+- Échec de livraison.
+- Annulée.
 
----
+### 3.7. Gestion des factures PDF
 
-# 🌄 Background
+- Génération automatique des factures.
+- Création de documents PDF.
+- Informations sur le vendeur et le client.
+- Détail des produits commandés.
+- Quantités et prix unitaires.
+- Calcul du montant total.
+- Affichage des frais de livraison.
+- Date et numéro de facture.
+- Téléchargement et impression des factures.
 
-Le projet peut utiliser une image de fond personnalisée.
+### 3.8. Notifications WhatsApp
 
-Exemple :
+- Préparation des notifications destinées aux clients.
+- Confirmation des commandes.
+- Information sur l'état des commandes.
+- Notifications concernant les livraisons.
+- Communication des informations de paiement.
 
-```text
-img/
-└── FondFinal.jpg
-```
+*L'envoi automatisé nécessite une intégration avec une API ou un service compatible WhatsApp.*
 
-Le background est volontairement visible derrière les éléments de l'interface afin de renforcer l'identité visuelle du portail Wi-Fi.
+### 3.9. Tableau de bord et statistiques
 
-Il est possible de remplacer l'image par une autre image sans modifier l'ensemble de l'interface.
+- Nombre total de commandes.
+- Nombre de clients enregistrés.
+- Nombre de produits disponibles.
+- État général des stocks.
+- Chiffre d'affaires.
+- Suivi des paiements.
+- Commandes en attente.
+- Commandes livrées.
+- Statistiques des ventes.
+- Visualisation des performances commerciales.
 
----
+### 3.10. Gestion des abonnements
 
-# 📱 Responsive Design
+L'application prévoit une possibilité de commercialisation sous forme de service avec abonnement mensuel.
 
-L'interface est conçue pour fonctionner sur plusieurs types d'appareils :
+Fonctionnalités envisagées :
 
-### 📱 Smartphone
+- Gestion des abonnements des vendeurs.
+- Définition des formules d'abonnement.
+- Suivi des dates de début et d'expiration.
+- Gestion des renouvellements.
+- Suivi des paiements d'abonnement.
+- Activation et suspension des abonnements.
+- Gestion des fonctionnalités selon la formule choisie.
 
-- affichage vertical ;
-- cartes adaptées aux petits écrans ;
-- boutons facilement accessibles ;
-- texte lisible ;
-- espacement optimisé.
+## 4. Architecture multi-vendeurs
 
-### 📲 Tablette
+Social Commerce Manager utilise une architecture multi-vendeurs permettant à plusieurs commerçants de partager une même application.
 
-L'interface s'adapte automatiquement à une largeur intermédiaire.
+Chaque vendeur dispose de son propre espace de travail.
 
-### 💻 Ordinateur
+**Principe de fonctionnement :**
 
-La page utilise l'espace disponible pour présenter les informations de manière plus large et confortable.
+- Un vendeur possède ses propres clients.
+- Un vendeur gère ses propres produits.
+- Un vendeur consulte uniquement ses commandes.
+- Les stocks sont indépendants pour chaque vendeur.
+- Les paiements et les livraisons sont associés au vendeur concerné.
+- Les données d'un vendeur ne sont pas accessibles aux autres vendeurs.
 
----
+Cette organisation garantit une meilleure confidentialité et une gestion indépendante des activités commerciales.
 
-# 🧩 Structure du projet
+## 5. Technologies utilisées
 
-Une organisation possible du portail est la suivante :
-
-```text
-WiFi-ZoNe206/
-│
-├── login.html
-├── status.html
-├── logout.html
-├── error.html
-├── redirect.html
-├── rlogin.html
-├── radvert.html
-├── alogin.html
-├── md5.js
-│
-├── css/
-│   └── style.css
-│
-├── img/
-│   └── FondFinal.jpg
-│
-└── README.md
-```
-
-## 📄 Principales pages
-
-| Fichier | Rôle |
+| Technologie | Utilisation |
 |---|---|
-| `login.html` | Page principale de connexion |
-| `status.html` | Informations sur la session utilisateur |
-| `logout.html` | Page après déconnexion |
-| `error.html` | Affichage des erreurs |
-| `redirect.html` | Gestion de la redirection |
-| `rlogin.html` | Page de reconnexion |
-| `radvert.html` | Page publicitaire/information |
-| `alogin.html` | Traitement après authentification |
-| `md5.js` | Gestion de l'authentification CHAP |
-| `style.css` | Styles graphiques du portail |
+| Python | Langage de programmation principal |
+| Django | Framework de développement backend |
+| PostgreSQL | Système de gestion de base de données |
+| HTML5 | Structure des pages web |
+| CSS3 | Mise en forme et design |
+| JavaScript | Interactivité côté client |
+| Bootstrap | Framework d'interface responsive |
+| ReportLab | Génération des factures PDF |
+| WhatsApp API | Intégration des notifications |
 
----
+## 6. Architecture du projet
 
-# ⚙️ Technologies utilisées
+Le projet est organisé selon une architecture modulaire Django afin de faciliter la maintenance, l'évolution et la réutilisation du code.
 
-Le projet repose principalement sur des technologies Web standards :
+Les principales applications sont :
 
-- **HTML5** — structure des pages ;
-- **CSS3** — design et responsive design ;
-- **JavaScript** — interactions et authentification ;
-- **MikroTik Hotspot** — portail captif et gestion de l'accès Wi-Fi ;
-- **CHAP / MD5** — mécanisme d'authentification utilisé par les modèles Hotspot concernés.
+| Module | Responsabilité |
+|---|---|
+| accounts | Comptes utilisateurs et authentification |
+| customers | Gestion des clients |
+| stores | Gestion des vendeurs et des boutiques |
+| products | Gestion des produits |
+| inventory | Gestion des stocks |
+| orders | Gestion des commandes |
+| payments | Gestion des paiements |
+| deliveries | Gestion des livraisons |
+| invoices | Génération des factures PDF |
+| notifications | Gestion des notifications |
 
----
-
-# 🔐 Authentification MikroTik
-
-Lorsque l'authentification CHAP est activée, la page de connexion utilise le mécanisme prévu par MikroTik.
-
-Exemple de variables utilisées :
-
-```html
-$(chap-id)
-$(chap-challenge)
-```
-
-Le fichier JavaScript correspondant doit être présent dans le dossier du Hotspot :
+## 7. Structure du projet
 
 ```text
-md5.js
+social-commerce-manager/
+│
+├── README.md
+├── manage.py
+├── requirements.txt
+├── .gitignore
+├── .env.example
+│
+├── config/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   ├── asgi.py
+│   └── wsgi.py
+│
+├── accounts/
+├── customers/
+├── stores/
+├── products/
+├── inventory/
+├── orders/
+├── payments/
+├── deliveries/
+├── invoices/
+├── notifications/
+│
+├── templates/
+├── static/
+├── media/
+│
+└── Les Diagrammes/
+    ├── diagramme_cas_utilisation/
+    ├── diagramme_classes/
+    └── diagramme_sequence/
 ```
 
-> ⚠️ `md5.js` est le fichier JavaScript utilisé côté navigateur pour le mécanisme CHAP. Il ne faut pas confondre ce fichier avec un fichier Java `.jar`.
+*Cette structure est indicative et doit correspondre à l'organisation réelle du dépôt.*
 
----
+## 8. Installation et configuration
 
-# 🚀 Installation sur MikroTik
+### 8.1. Prérequis
 
-## 1. Préparer les fichiers
+Avant de commencer, assurez-vous d'avoir installé :
 
-Placez les fichiers du portail dans le dossier Hotspot correspondant à votre configuration MikroTik.
+- Python.
+- Django.
+- PostgreSQL.
+- Git.
+- Un éditeur de code (Visual Studio Code recommandé).
 
-Structure recommandée :
+### 8.2. Cloner le repository
 
-```text
-hotspot/
-│
-├── login.html
-├── status.html
-├── logout.html
-├── error.html
-├── redirect.html
-├── rlogin.html
-├── radvert.html
-├── alogin.html
-├── md5.js
-│
-├── css/
-│   └── style.css
-│
-└── img/
-    └── FondFinal.jpg
+```bash
+git clone https://github.com/armailjean/social-commerce-manager.git
 ```
 
----
+Accéder au dossier du projet :
 
-## 2. Transférer les fichiers
+```bash
+cd social-commerce-manager
+```
 
-Les fichiers peuvent être transférés vers le routeur à l'aide de l'outil de gestion de fichiers disponible dans l'environnement MikroTik, notamment **Winbox** ou une méthode de transfert compatible.
+### 8.3. Créer un environnement virtuel
 
-Vérifiez que les chemins utilisés dans les pages correspondent réellement aux fichiers présents sur le routeur.
+Sous Windows :
+
+```powershell
+python -m venv .venv
+```
+
+Activer l'environnement :
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+### 8.4. Installer les dépendances
+
+```bash
+python -m pip install --upgrade pip
+```
+
+```bash
+pip install -r requirements.txt
+```
+
+### 8.5. Configurer PostgreSQL
+
+Créer une base de données PostgreSQL pour le projet.
 
 Exemple :
 
-```html
-<link rel="stylesheet" href="css/style.css">
+```sql
+CREATE DATABASE social_commerce_db;
 ```
 
-et :
+Configurer ensuite les paramètres de connexion dans le fichier `.env`, notamment :
 
-```css
-background-image: url('../img/FondFinal.jpg');
+- DB_NAME
+- DB_USER
+- DB_PASSWORD
+- DB_HOST
+- DB_PORT
+- SECRET_KEY
+
+Ne jamais publier les véritables mots de passe ou clés secrètes sur GitHub.
+
+### 8.6. Effectuer les migrations
+
+```bash
+python manage.py makemigrations
 ```
 
----
+```bash
+python manage.py migrate
+```
 
-## 3. Vérifier le profil Hotspot
+### 8.7. Créer un administrateur
 
-Le profil Hotspot doit utiliser le dossier contenant les fichiers du portail.
+```bash
+python manage.py createsuperuser
+```
 
-Il faut notamment vérifier que le serveur Hotspot pointe vers le bon répertoire.
+### 8.8. Lancer le serveur
 
----
+```bash
+python manage.py runserver
+```
 
-## 4. Tester la connexion
-
-Après installation :
-
-1. connecter un appareil au réseau Wi-Fi ;
-2. ouvrir un navigateur ;
-3. accéder à une page Internet ;
-4. vérifier l'apparition du portail ;
-5. tester la connexion avec un compte Hotspot ;
-6. vérifier la redirection ;
-7. vérifier la page de statut ;
-8. tester la déconnexion.
-
----
-
-# 🧪 Tests recommandés
-
-Avant la mise en production, tester le portail sur plusieurs appareils.
-
-### 📱 Smartphones
-
-Tester notamment :
-
-- Android ;
-- différents navigateurs ;
-- différentes tailles d'écran ;
-- affichage du portail captif.
-
-### 💻 Ordinateurs
-
-Tester :
-
-- Chrome ;
-- Edge ;
-- Firefox ;
-- différentes résolutions.
-
-### 🌐 Connexion réseau
-
-Vérifier :
-
-- apparition du portail ;
-- authentification ;
-- redirection ;
-- navigation Internet ;
-- déconnexion ;
-- reconnexion.
-
----
-
-# ⚡ Optimisation
-
-Le portail doit rester léger afin de réduire le temps d'affichage, notamment sur les smartphones.
-
-Les recommandations sont :
-
-- limiter les images trop lourdes ;
-- optimiser les fichiers CSS ;
-- limiter les bibliothèques externes ;
-- compresser les images ;
-- éviter les scripts inutiles ;
-- privilégier un code HTML/CSS simple.
-
-Cette optimisation est particulièrement importante pour un portail captif utilisé par de nombreux utilisateurs simultanément.
-
----
-
-# 🎨 Personnalisation
-
-L'identité visuelle peut être facilement adaptée.
-
-Les éléments personnalisables comprennent :
-
-- nom du réseau ;
-- logo ;
-- image de fond ;
-- couleurs ;
-- offres ;
-- prix ;
-- textes ;
-- coordonnées ;
-- boutons ;
-- informations commerciales.
-
-Par exemple :
+Ouvrir ensuite l'application dans le navigateur :
 
 ```text
-Nom du réseau :
-ZoNe206
-
-Service :
-WiFi Internet
-
-Devise :
-Ariary (Ar)
-
-Technologie :
-MikroTik Hotspot
+http://127.0.0.1:8000/
 ```
 
----
+*Les commandes supposent que le projet Django et ses fichiers de configuration sont correctement configurés.*
 
-# 📊 Évolutions possibles
+## 9. Devise et langues
 
-Le projet peut évoluer progressivement vers un portail Wi-Fi plus complet.
+**Devise principale :** Ariary malgache (MGA).
 
-Les évolutions possibles comprennent :
+**Langues de l'interface :**
+- Français.
+- Malagasy.
 
-- 📊 tableau de bord utilisateur ;
-- 📈 affichage de la consommation Internet ;
-- ⏱️ affichage du temps restant ;
-- 💾 affichage du volume restant ;
-- 🎟️ intégration des tickets Hotspot ;
-- 💳 informations sur les moyens de paiement ;
-- 📱 amélioration de l'expérience mobile ;
-- 🔔 notifications ;
-- 📢 espace publicitaire ;
-- 🌐 page d'information réseau ;
-- 👤 espace utilisateur ;
-- 📊 statistiques de consommation ;
-- 🔄 amélioration de la gestion des sessions.
+L'application est pensée pour répondre aux besoins des vendeurs et commerçants, notamment dans le contexte du commerce en ligne à Madagascar.
 
----
+## 10. Sécurité et confidentialité
 
-# 🛡️ Sécurité
+La sécurité constitue un élément important de l'application.
 
-Le portail doit être utilisé avec une configuration MikroTik correctement sécurisée.
+Les principes prévus comprennent :
 
-Il est recommandé de :
+- Authentification des utilisateurs.
+- Protection des données personnelles.
+- Gestion des autorisations.
+- Isolation des données entre vendeurs.
+- Protection contre les accès non autorisés.
+- Utilisation des variables d'environnement.
+- Protection des informations sensibles.
+- Validation des données saisies.
 
-- protéger l'accès administrateur au routeur ;
-- utiliser des mots de passe sécurisés ;
-- ne pas exposer les informations sensibles dans les fichiers publics ;
-- vérifier les paramètres Hotspot ;
-- limiter les accès administratifs ;
-- maintenir RouterOS à jour selon les possibilités du matériel ;
-- contrôler régulièrement les utilisateurs et sessions.
+## 11. Perspectives d'évolution
 
-Les informations sensibles liées à la configuration du routeur ne doivent pas être publiées dans le dépôt GitHub.
+Les évolutions envisagées pour les prochaines versions comprennent :
 
----
+- Intégration de l'API WhatsApp Business.
+- Automatisation de certaines opérations commerciales.
+- Amélioration du tableau de bord statistique.
+- Intégration de moyens de paiement supplémentaires.
+- Développement d'une application mobile.
+- Gestion avancée des abonnements.
+- Exportation des rapports commerciaux.
+- Intégration éventuelle avec Facebook et d'autres plateformes de vente.
 
-# 📁 Git et GitHub
+## 12. Auteur
 
-Pour initialiser le dépôt :
+**Armail**
 
-```bash
-git init
-```
+Développeur informatique
 
-Ajouter les fichiers :
+Compétences :
+- Développement Python et Django.
+- Développement Java.
+- Développement Web.
+- Gestion de bases de données.
+- PostgreSQL.
+- Conception et développement d'applications.
 
-```bash
-git add .
-```
+GitHub : [@armailjean](https://github.com/armailjean)
 
-Créer le premier commit :
+## 13. Licence
 
-```bash
-git commit -m "feat: création du portail WiFi ZoNe206"
-```
-
-Associer le dépôt distant :
-
-```bash
-git remote add origin https://github.com/VOTRE-USERNAME/WiFi-ZoNe206.git
-```
-
-Envoyer le projet :
-
-```bash
-git branch -M main
-git push -u origin main
-```
+Ce projet est destiné à être distribué sous licence MIT, sous réserve de l'ajout du fichier `LICENSE` correspondant et de la confirmation des droits sur les composants utilisés.
 
 ---
 
-# 📝 Convention des commits
-
-Pour conserver un historique propre :
-
-```text
-feat: ajout d'une fonctionnalité
-fix: correction d'un problème
-style: amélioration du design
-refactor: réorganisation du code
-docs: mise à jour de la documentation
-perf: amélioration des performances
-```
-
-Exemples :
-
-```bash
-git commit -m "feat: ajout des offres WiFi"
-git commit -m "style: amélioration du portail mobile"
-git commit -m "fix: correction de la redirection Hotspot"
-git commit -m "docs: mise à jour du README"
-```
-
----
-
-# 🗺️ Roadmap
-
-## Version 1.0
-
-- [x] Création de la page d'accueil
-- [x] Intégration MikroTik Hotspot
-- [x] Design responsive
-- [x] Présentation des offres
-- [x] Background personnalisé
-- [x] Interface de connexion
-
-## Version 1.1
-
-- [ ] Optimisation avancée mobile
-- [ ] Amélioration des animations
-- [ ] Amélioration de l'accessibilité
-- [ ] Optimisation des performances
-
-## Version 2.0
-
-- [ ] Suivi de consommation
-- [ ] Affichage du volume restant
-- [ ] Affichage du temps restant
-- [ ] Intégration avancée des tickets
-- [ ] Tableau de bord utilisateur
-- [ ] Notifications
-
----
-
-# 📸 Captures d'écran
-
-Les captures d'écran peuvent être ajoutées dans :
-
-```text
-docs/
-└── screenshots/
-    ├── accueil.png
-    ├── connexion.png
-    ├── offres.png
-    └── mobile.png
-```
-
-Exemple :
-
-```markdown
-![Page d'accueil ZoNe206](docs/screenshots/accueil.png)
-```
-
----
-
-# 🌐 Utilisation
-
-Le portail est destiné principalement à un environnement **Wi-Fi Hotspot MikroTik**.
-
-L'utilisateur :
-
-```text
-Connexion au Wi-Fi
-        ↓
-Détection du portail captif
-        ↓
-Page d'accueil ZoNe206
-        ↓
-Consultation des offres
-        ↓
-Authentification
-        ↓
-Connexion Internet
-        ↓
-Navigation
-```
-
----
-
-# 💡 Pourquoi ce projet ?
-
-Le projet répond à un besoin concret : proposer aux utilisateurs d'un réseau Wi-Fi une interface d'accès plus claire, moderne et professionnelle.
-
-Une bonne page de portail captif permet notamment de :
-
-- renforcer l'identité du service Wi-Fi ;
-- présenter les offres de manière claire ;
-- simplifier l'accès à Internet ;
-- améliorer l'expérience utilisateur ;
-- fournir des informations commerciales directement lors de la connexion.
-
----
-
-# 👨‍💻 Auteur
-
-## Armail Jean
-
-**Étudiant en Master 2 — Génie informatique / Mathématiques et Informatique**
-
-Domaines d'intérêt :
-
-- 💻 Développement informatique
-- 🌐 Développement Web
-- 📡 Réseaux & Wi-Fi
-- 🖥️ MikroTik
-- 🗄️ Bases de données
-- 🤖 Automatisation
-- 🛠️ Conception de solutions informatiques
-
-Ce projet s'inscrit dans une démarche pratique de conception et de développement d'une solution Web destinée à un environnement réseau réel.
-
----
-
-# 📄 Licence
-
-La licence du projet doit être définie selon les conditions de distribution souhaitées par l'auteur.
-
-Si aucune licence n'est encore définie, il est recommandé d'ajouter un fichier `LICENSE` avant d'indiquer publiquement une licence particulière.
-
----
-
-# ⭐ Soutenir le projet
-
-Si vous trouvez ce projet intéressant :
-
-- ⭐ ajoutez une étoile au dépôt ;
-- 🐛 signalez les problèmes rencontrés ;
-- 💡 proposez des améliorations ;
-- 🔀 contribuez au développement ;
-- 📢 partagez le projet.
-
----
-
-# 📬 Contact
-
-Pour toute question, suggestion ou collaboration, vous pouvez contacter l'auteur via GitHub.
-
----
-
-<div align="center">
-
-### 🌐 ZoNe206 WiFi
-
-**Une expérience Wi-Fi simple, moderne et accessible.**
-
-📡 **Connectez • Choisissez • Naviguez**
-
-⭐ *Merci de soutenir le projet !*
-
-</div>
+<p align="center">
+  <strong>Social Commerce Manager</strong>
+  <br/>
+  Simplifier la gestion commerciale. Centraliser les commandes. Développer les ventes.
+</p>
